@@ -19,6 +19,8 @@ def greet(name: str = "World") -> str:
         >>> greet("Python")
         'Hello, Python!'
     """
+    # TODO: Trigger comment via the workflow!
+
     return f"Hello, {name}!"
 
 
