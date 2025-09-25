@@ -2,7 +2,7 @@ name: Todo Check
 
 on:
     pull_request:
-      types: [opened]
+      types: [opened, synchronize, reopened]
 
 jobs:
     todo-check:
@@ -14,6 +14,6 @@ jobs:
             - name: Run vibed-todo-action
               uses: Mikolaj-A-Kowalski/vibed-todo-action@master
               with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
+                github-token: ${{ secrets.GITHUB_TOKEN }}
                 todo-pattern: 'TODO'
-                fix-pattern: 'Please fix me before merging'
+                comment-prefix: 'Please fix me before merging'
