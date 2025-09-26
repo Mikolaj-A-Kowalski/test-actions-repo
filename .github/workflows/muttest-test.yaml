@@ -12,7 +12,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Poke a bit 
+        run: |
+          pwd 
+          ls -la
+          git status
+
       - name: Try the mutation testing
-        uses: Mikolaj-A-Kowalski/diff-mutation-testing@master
+        uses: Mikolaj-A-Kowalski/diff-mutation-testing@actions-tooling
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
