@@ -1,0 +1,22 @@
+name: mutation-testing
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  workflow_dispatch:
+
+jobs:
+  mutation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+            fetch-depth: 0   # fetch full history
+
+      - name: Try the mutation testing
+        uses: Mikolaj-A-Kowalski/diff-mutation-testing@actions-tooling
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          build-commands: pip install -e .[dev] 
+          test-commands: pytest -q
